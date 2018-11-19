@@ -20,7 +20,6 @@ const Nav = () => (
        <style jsx>{`
         nav {
             max-width: 900px;
-            background: #f0f0f0;
             border: 1px solid #ccc;
             border-right: none;
         }
@@ -53,7 +52,7 @@ const Nav = () => (
             font-size: 0.8em;
             display: block;
             text-decoration: none;
-            color: #616161;
+            color: rgb(239,239,239);
             padding: 5px 0;
         }
 
