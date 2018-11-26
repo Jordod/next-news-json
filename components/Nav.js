@@ -2,24 +2,18 @@
 // https://www.sitepoint.com/responsive-fluid-width-variable-item-navigation-css/
 // https://www.w3schools.com/Css/css_navbar.asp
 
-import Link from 'next/link';
+import Link from 'next/link'
 
 const Nav = () => (
    <div>
        <nav>
            <ul>
             <li><Link href="/index"><a>Home</a></Link></li>
-            <li><Link href="/news"><a>News</a></Link></li>
-            <li><Link href="/business"><a>Business</a></Link></li>
-            <li><Link href="/sport"><a>Sport</a></Link></li>
-            <li><Link href="/weather"><a>Weather</a></Link></li>
            </ul>
        </nav>
-       {/* Define css for this page or component */}
-       {/* Note back ticks `` surrounding css are required */}
        <style jsx>{`
         nav {
-            max-width: 900px;
+            max-width: 200px;
             border: 1px solid #ccc;
             border-right: none;
         }
@@ -42,6 +36,11 @@ const Nav = () => (
             width: 16.6667%; /* fallback for non-calc() browsers */
             width: calc(100% / 6);
             box-sizing: border-box;
+            padding: 5px;
+        }
+
+        nav ul li input {
+            display : inline
         }
 
         nav ul li:first-child {
@@ -50,10 +49,9 @@ const Nav = () => (
 
         nav ul li a {
             font-size: 0.8em;
-            display: block;
             text-decoration: none;
             color: rgb(239,239,239);
-            padding: 5px 0;
+            margin: 50px 0;
         }
 
         nav ul li:hover {

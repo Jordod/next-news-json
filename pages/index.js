@@ -1,8 +1,8 @@
 // This is the Link API
 import Link from 'next/link';
+import Router from 'next/router';
 import fetch from 'isomorphic-unfetch';
 import SearchForm from '../components/SearchForm';
-
 
 export default class News extends React.Component {
 
@@ -13,7 +13,8 @@ export default class News extends React.Component {
       newsSource: "the-irish-times",
       newsSourceName: "The Irish Times",
       articles: [],
-      category : null
+      category : null,
+      searchTerm : null
     }
   }
 
@@ -21,6 +22,17 @@ export default class News extends React.Component {
     this.setState({
       newsSource: input.value,
       newsSourceName : input.label,
+    })
+  }
+
+  handleSearchTermSubmit = event => {
+    event.preventDefault();
+    Router.push(`/search?q=${this.state.searchTerm}`);
+  }
+
+  handleSearchChange = event => {
+    this.setState({
+      searchTerm : event.target.value
     })
   }
 
@@ -42,6 +54,16 @@ export default class News extends React.Component {
       <div>
         <div style={{maxWidth : "60%"}}>
           <SearchForm setNewsSource={this.setNewsSource} setNewsCategory={this.setNewsCategory} sources={this.props.sources} categories={this.props.categories}/>
+          <div className="SearchBar">
+          <form>
+            <input 
+              placeholder = "Search for a story"
+              name='search'
+              value={this.state.searchTerm} 
+              onChange={e => this.handleSearchChange(e)}/>
+            <button onClick={(e) => this.handleSearchTermSubmit(e)}>Search</button> 
+          </form>
+          </div>
         </div>
         <div>
           <h3>News from {!(this.state.newsSourceName == null) ? <span>{this.state.newsSourceName}</span> : <span>{this.state.category}</span>}</h3>
@@ -53,6 +75,7 @@ export default class News extends React.Component {
               <p>{article.description}</p>
               <p>{article.content}</p>
               <p><Link href={article.url}><a>Read More</a></Link></p>
+              <p><Link href={{pathname : "/search", query : { q : article.title}}}><a>Find More Like This</a></Link></p>
             </section>
           ))}
         </div>
@@ -99,6 +122,27 @@ export default class News extends React.Component {
             .article-img {
                 max-width: 50%;
             }
+
+            .SearchBar form input {
+              min-width : 85%;
+              padding: 0.8em;
+            }
+
+            .SearchBar form {
+              min-width : 100%;
+            }
+
+            .SearchBar {
+              min-width : 100%;
+            }
+
+            .SearchBar form button {
+              max-width : 20%;
+              min-height: 100%;
+              display :inline;
+            }
+
+
         `}</style>
 
       </div>

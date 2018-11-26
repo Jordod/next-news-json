@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select'
+import { Router } from 'next/router';
 
 // Define SearchForm Class
 
@@ -69,6 +70,9 @@ export default class SearchForm extends Component {
                     h3 {
                         font-family: "Arial";
                         color: rgb(239,239,239);
+                    }
+                    #searchbar {
+                        min-width : 198px;
                     }
                 `}</style>
             </div>

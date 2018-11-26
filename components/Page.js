@@ -14,7 +14,7 @@ class Page extends Component {
                 {/* Content to output*/}
                 <Meta />
                 <Header />
-                {/* <Nav /> */}
+                <Nav />
                 {/* Render props passed to this Component */}
                 {this.props.children}
                 <Footer />

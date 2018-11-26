@@ -1,6 +1,7 @@
+import Link from 'next/link'
 const Header = () => (
     <div>
-        <h2  className="title">My News</h2>
+        <Link href="/"><h2 className="title">My News</h2></Link>
         <style jsx>{`
             .title {
                 font-family: "Arial";
