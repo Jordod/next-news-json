@@ -2,7 +2,7 @@
 const Footer = () => (
     <div>
         <footer>
-            <p>contact information: info@newssite.com</p>
+            <p>Powered by https://newsapi.org/</p>
         </footer>
         <style jsx>{`
             footer {
